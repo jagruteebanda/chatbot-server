@@ -160,3 +160,5 @@ router.get("/removeusers", function(req, res, next) {
       });
     });
 });
+
+module.exports = router;

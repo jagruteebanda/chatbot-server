@@ -10,4 +10,6 @@ router.get("/create", function(req, res, next) {
       })
         .then(res => console.log('sent message with id', res.id))
         .catch(err => console.error(err))
-}
+});
+
+module.exports = router;

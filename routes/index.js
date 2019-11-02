@@ -7,5 +7,6 @@ const messageRouter = require("./messages");
 
 router.use("/user", usersRouter);
 router.use("/room", roomsRouter);
+router.use("/message", messageRouter);
 
 module.exports = router;
