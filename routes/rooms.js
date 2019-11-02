@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const init = require("../init/initialize");
 
-router.get("/create", function(req, res, next) {
+router.get("/create", function (req, res, next) {
   init.chatkit
     .createRoom({
       id: "my-room",
@@ -27,7 +27,7 @@ router.get("/create", function(req, res, next) {
     });
 });
 
-router.get("/update", function(req, res, next) {
+router.get("/update", function (req, res, next) {
   init.chatkit
     .updateRoom({
       id: req.body.roomId,
@@ -52,7 +52,7 @@ router.get("/update", function(req, res, next) {
     });
 });
 
-router.get("/delete", function(req, res, next) {
+router.get("/delete", function (req, res, next) {
   init.chatkit
     .getDeleteStatus({ jobId: req.body.roomId })
     .then(res => {
@@ -73,7 +73,7 @@ router.get("/delete", function(req, res, next) {
     });
 });
 
-router.get("/getroom", function(req, res, next) {
+router.get("/getroom", function (req, res, next) {
   init.chatkit
     .getRoom({
       roomId: req.body.roomId
@@ -95,7 +95,7 @@ router.get("/getroom", function(req, res, next) {
     });
 });
 
-router.get("/getrooms", function(req, res, next) {
+router.get("/getrooms", function (req, res, next) {
   init.chatkit
     .getRooms({})
     .then(res => {
@@ -115,7 +115,7 @@ router.get("/getrooms", function(req, res, next) {
     });
 });
 
-router.get("/addusers", function(req, res, next) {
+router.get("/addusers", function (req, res, next) {
   init.chatkit
     .addUsersToRoom({
       roomId: req.body.roomId,
@@ -138,7 +138,7 @@ router.get("/addusers", function(req, res, next) {
     });
 });
 
-router.get("/removeusers", function(req, res, next) {
+router.get("/removeusers", function (req, res, next) {
   init.chatkit
     .removeUsersFromRoom({
       roomId: req.body.roomId,
@@ -159,6 +159,64 @@ router.get("/removeusers", function(req, res, next) {
         error: err
       });
     });
+});
+
+router.post("/flushroom", function (req, res, next) {
+  init.chatkit.fetchMultipartMessages({
+    roomId: req.body.roomId,
+  }).then(messages => {
+    if (messages.length > 0) {
+      messages.map((m) => {
+        init.chatkit.deleteMessage({
+          roomId: req.body.roomId,
+          messageId: m.id
+        }).then(() => {
+          console.log('Delete message successful :: ', m.id);
+        }).catch(err => {
+          console.log('Error in deleting message :: ', m.id);
+        }, () => {
+          res.send({
+            code: 200,
+            message: 'Room flushed successfully'
+          })
+        });
+      });
+      return init.chatkit.fetchMultipartMessages({
+        roomId: req.body.roomId,
+        initialId: res[messages.length - 1].id,
+      })
+    } else {
+      res.send({
+        code: 200,
+        message: 'Room flushed successfully'
+      });
+    }
+  }).then(moreMessages => {
+    if (moreMessages && moreMessages.length > 0) {
+      moreMessages.map((m) => {
+        init.chatkit.deleteMessage({
+          roomId: req.body.roomId,
+          messageId: m.id
+        }).then(() => {
+          console.log('Delete message successful :: ', m.id);
+        }).catch(err => {
+          console.log('Error in deleting message :: ', m.id);
+        }, () => {
+          res.send({
+            code: 200,
+            message: 'Room flushed successfully'
+          })
+        });
+      });
+    }
+  }).catch(err => {
+    console.log('Erro:: ', err);
+    res.send({
+      code: 403,
+      message: 'Coudnt delete messages',
+      error: err
+    })
+  })
 });
 
 module.exports = router;

@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const init = require("../init/initialize");
 
-
 router.get("/temp", function(req, res, next) {
   console.log("/temp ===========================>");
   res.send({
