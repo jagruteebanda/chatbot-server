@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const init = require("../init/initialize");
 
+const mongoDbUrl = "mongodb://localhost:27017/";
+
 router.get("/temp", function(req, res, next) {
   console.log("/temp ===========================>");
   res.send({
@@ -41,6 +43,9 @@ router.post("/create", function(req, res, next) {
     })
     .then(response => {
       console.log(response, "======================>");
+      init.mongoClient.connect(mongoDbUrl, (err, db) => {
+        
+      });
       res.send({
         code: 200,
         message: "User created successfully"
