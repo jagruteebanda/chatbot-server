@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const init = require("../init/initialize");
 
-router.get("/create", function(req, res, next) {
+router.post("/create", function(req, res, next) {
   init.chatkit
     .createRoom({
       id: "my-room",
@@ -27,7 +27,7 @@ router.get("/create", function(req, res, next) {
     });
 });
 
-router.get("/update", function(req, res, next) {
+router.post("/update", function(req, res, next) {
   init.chatkit
     .updateRoom({
       id: req.body.roomId,
@@ -52,7 +52,7 @@ router.get("/update", function(req, res, next) {
     });
 });
 
-router.get("/delete", function(req, res, next) {
+router.post("/delete", function(req, res, next) {
   init.chatkit
     .getDeleteStatus({ jobId: req.body.roomId })
     .then(res => {
@@ -73,7 +73,7 @@ router.get("/delete", function(req, res, next) {
     });
 });
 
-router.get("/getroom", function(req, res, next) {
+router.post("/getroom", function(req, res, next) {
   init.chatkit
     .getRoom({
       roomId: req.body.roomId
@@ -115,7 +115,7 @@ router.get("/getrooms", function(req, res, next) {
     });
 });
 
-router.get("/addusers", function(req, res, next) {
+router.post("/addusers", function(req, res, next) {
   init.chatkit
     .addUsersToRoom({
       roomId: req.body.roomId,
@@ -138,7 +138,7 @@ router.get("/addusers", function(req, res, next) {
     });
 });
 
-router.get("/removeusers", function(req, res, next) {
+router.post("/removeusers", function(req, res, next) {
   init.chatkit
     .removeUsersFromRoom({
       roomId: req.body.roomId,
