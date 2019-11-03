@@ -1,0 +1,28 @@
+{
+      "product_type": "Personal Care",
+      "categories": [
+            {
+                  "category_name": "Body groomers",
+                  "products": [
+                        {
+                              
+                        }
+                  ]
+            },
+            {
+                  "category_name": "Face shavers",
+            },
+            {
+                  "category_name": "Face skin",
+            },
+            {
+                  "category_name": "Face stylers and grooming kits",
+            },
+            {
+                  "category_name": "Hair removal",
+            },
+            {
+                  "category_name": "Hair care"
+            }
+      ]
+}        

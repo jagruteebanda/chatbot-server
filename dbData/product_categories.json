@@ -1,0 +1,87 @@
+{
+      "type": "product_categories",
+      "category_types": [
+            {
+                  "category_name": "Personal Care",
+                  "collection_name": "personalCare",
+                  "product_types": [
+                        "Body groomers",
+                        "Face shavers",
+                        "Face skin",
+                        "Face stylers and grooming kits",
+                        "Hair removal",
+                        "Hair care"
+                  ]
+            },
+            {
+                  "category_name": "Household",
+                  "collection_name": "household",
+                  "product_types": [
+                        "Air Purifier",
+                        "Citrus Press",
+                        "Coffee",
+                        "Cooking",
+                        "Dry Iron",
+                        "Food Preparation",
+                        "Garment Care",
+                        "Induction Cooker",
+                        "Ironing",
+                        "Juicer Mixer and Grinder",
+                        "Kettles and Tea Makers",
+                        "Mixer",
+                        "Rice Cooker",
+                        "Saeco espresso",
+                        "Toasters"
+                  ]
+            },
+            {
+                  "category_name": "Air Purifiers",
+                  "collection_name": "airPurifiers",
+                  "product_types": [
+                        "Air Purifier",
+                        "Filters",
+                        "Humidifiers"
+                  ]
+            },
+            {
+                  "category_name": "Lighting",
+                  "collection_name": "lighting",
+                  "product_types": [
+                        "Consumer Lamps",
+                        "Disney",
+                        "LED Lamps",
+                        "Luminaires",
+                        "Modular switches"
+                  ]
+            },
+            {
+                  "category_name": "Mother & Child",
+                  "collection_name": "motherAndChild",
+                  "product_types": [
+                        "Accessories",
+                        "Bottle feeding",
+                        "Bottle teats",
+                        "Bottle warmers & sterilizers",
+                        "Breastfeeding",
+                        "Toddler drinking",
+                        "Toddler feeding"
+                  ]
+            },
+            {
+                  "category_name": "Healthcare",
+                  "collection_name": "healthcare",
+                  "product_types": [
+                        "Sleep and Respiratory care"
+                  ]
+            },
+            {
+                  "category_name": "Accessories",
+                  "collection_name": "accessories",
+                  "categories": [
+                        "Garment care",
+                        "Kitchen Appliances",
+                        "Personal care"
+                  ]
+            }
+      ]
+}
