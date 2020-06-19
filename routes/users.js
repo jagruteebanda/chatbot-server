@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const init = require("../init/initialize");
 
-const mongoDbUrl = "mongodb://localhost:27017/";
+// const mongoDbUrl = "mongodb://localhost:27017/"; // local url
+const mongoDbUrl =
+  "mongodb+srv://jagruteebanda:jagz%40123@cluster0-imu9r.mongodb.net";
 
 router.get("/temp", function(req, res, next) {
   console.log("/temp ===========================>");
@@ -36,25 +38,114 @@ router.post("/auth", function(req, res, next) {
 });
 
 router.post("/create", function(req, res, next) {
+  console.log("In /apis/user/create =============>");
   init.chatkit
     .createUser({
       id: req.body.userId,
       name: req.body.userName
     })
-    .then(response => {
-      console.log(response, "======================>");
-      init.mongoClient.connect(mongoDbUrl, (err, db) => {
-        
-      });
-      res.send({
-        code: 200,
-        message: "User created successfully"
-      });
+    .then(user => {
+      console.log("User created successfully", user);
+      init.chatkit
+        .createRoom({
+          id: `${req.body.userId}_chat_room`,
+          creatorId: req.body.userId,
+          name: `${req.body.userId}_chat_room`
+        })
+        .then(room => {
+          console.log("Room created successfully", room);
+          init.chatkit
+            .addUsersToRoom({
+              roomId: room.id,
+              userIds: [req.body.userId, "chatbot"]
+            })
+            .then(() => {
+              console.log("Success while adding users to the room.");
+              let messages = [];
+              init.chatkit
+                .sendSimpleMessage({
+                  userId: "chatbot",
+                  roomId: room.id,
+                  text: `Hello ${user.name}`
+                })
+                .then(msgRes => {
+                  console.log("Sent message with id:: ", msgRes);
+                  init.chatkit
+                    .sendSimpleMessage({
+                      userId: "chatbot",
+                      roomId: room.id,
+                      text: `Looking to buy something?`
+                    })
+                    .then(msgRes => {
+                      console.log("Sent message with id:: ", msgRes);
+                    })
+                    .catch(msgErr => {
+                      console.log("Error in sending message :: ", msgErr);
+                    });
+                })
+                .catch(msgErr => {
+                  console.log("Error in sending message :: ", msgErr);
+                });
+              res.send({
+                code: 200,
+                message: "Created room for user",
+                roomId: room.id,
+                roomName: room.name,
+                userId: user.id,
+                userName: user.name
+              });
+            })
+            .catch(err => {
+              console.log("Error while adding users to the room :: ", err);
+            });
+          init.mongoClient.connect(mongoDbUrl, (dbErr, db) => {
+            if (dbErr) {
+              console.log("Error connecting to DB :: ", dbErr);
+            } else {
+              const dbo = db.db("chatbot");
+              dbo
+                .collection("users")
+                .insertOne(user, function(userErr, userRes) {
+                  if (userErr) {
+                    console.log("Error while inserting user :: ", userErr);
+                  } else {
+                    console.log(
+                      "Success while inserting user:: ",
+                      userRes["ops"]
+                    );
+                  }
+                });
+              dbo
+                .collection("rooms")
+                .insertOne(room, function(roomErr, roomRes) {
+                  if (roomErr) {
+                    console.log("Error while inserting room :: ", roomErr);
+                  } else {
+                    console.log(
+                      "Success while inserting room:: ",
+                      roomRes["ops"]
+                    );
+                  }
+                });
+              db.close();
+            }
+          });
+        })
+        .catch(err => {
+          console.log("Not able to create room:: ", err);
+          res.send({
+            code: 403,
+            message: "Not able to create room",
+            error: err
+          });
+        });
     })
     .catch(error => {
+      console.log("Not able to create user:: ", error);
       res.send({
         code: 403,
-        message: "Not able to create user"
+        message: "Not able to create user",
+        error
       });
     });
 });

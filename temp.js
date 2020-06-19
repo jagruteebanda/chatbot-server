@@ -101,10 +101,67 @@ client.connect((err, db) => {
   if (err) throw err;
   const dbo = db.db("chatbot");
 
+  /* TRUNCATE COLLECTION - rooms */
+  // dbo.collection("rooms").remove({}, function(err, obj) {
+  //   if (err) throw err;
+  //   console.log(obj.result.n + " document(s) deleted");
+  //   db.close();
+  // });
+
   /* CREATE COLLECTION - products */
   //   dbo.createCollection("products", function(err, res) {
   //     if (err) throw err;
   //     console.log("Collection created!");
   //     db.close();
   //   });
+
+  /* CREATE COLLECTION - users */
+  // dbo.createCollection("users", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection created!", res);
+  //   db.close();
+  // });
+
+  /* CREATE COLLECTION - rooms */
+  // dbo.createCollection("rooms", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection created!", res);
+  //   db.close();
+  // });
+
+  /* CREATE COLLECTION - chats */
+  // dbo.createCollection("chats", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection created!", res);
+  //   db.close();
+  // });
+
+  // const product = {
+  //   name: "CloseCut shaving head Electric Shaver Wet & Dry",
+  //   model: "AT610/14",
+  //   function: "Great skin protection, smooth shave",
+  //   speciality: "Great skin protection, smooth shave",
+  //   description:
+  //     "Now you can enjoy a refreshing shave without worrying about damaging your skin. Use AquaTouch with shaving gel or foam for enhanced skin comfort. Aquatec seal ensures a safe, refreshing wet shave. Or use dry for a convenient quick shave.",
+  //   characteristics: ["CloseCut shaving head", "Wet&Dry"],
+  //   price: "2845",
+  //   rating: "4.0",
+  //   img_link: [
+  //     "https://images.philips.com/is/image/PhilipsConsumer/AT610_14-IMS-en_IN?wid=1000&hei=800&$jpgsmall$",
+  //     "https://images.philips.com/is/image/PhilipsConsumer/AT610_14-D1P-global-001?wid=1000&hei=800&$jpgsmall$",
+  //     "https://images.philips.com/is/image/PhilipsConsumer/AT610_14-DPP-global-001?wid=1000&hei=800&$jpgsmall$",
+  //     "https://images.philips.com/is/image/PhilipsConsumer/AT610_14-MI1-global-001?wid=1000&hei=800&$jpgsmall$"
+  //   ],
+  //   video_link: ""
+  // };
+  // dbo.collection("products").insertOne(product, function(err, res) {
+  //   if (err) throw err;
+  //   console.log("1 document inserted", res);
+  //   db.close();
+  // });
+  // dbo.collection("products").findOne({}, function(err, result) {
+  //   if (err) throw err;
+  //   console.log(result);
+  //   db.close();
+  // });
 });

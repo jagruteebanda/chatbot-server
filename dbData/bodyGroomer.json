@@ -1,18 +1,21 @@
 {
-      "_id": "5dbde3e61f0e8971d251acf5",
-      "name": "Unique Skin Protector body groomer",
-      "model": "BG1025/15",
-      "function": "TRIMS BODY HAIR, PROTECTS SKIN",
-      "speciality": "even in sensitive areas",
-      "description": "Comfortably trim unwanted body hair so you're always prepared for any occasion. This intuitive tool is designed to be gentle, for worry-free bodygrooming even in your most sensitive areas.",
-      "characteristics": [
-            "Unique Skin Protector",
-            "3mm trimming comb",
-            "100% waterproof",
-            "3 AA batteries"
-      ],
-      "price": "1270",
-      "rating": "3.9",
-      "img_link": "",
-      "video_link": ""
+  "_id": "5dbde3e61f0e8971d251acf5",
+  "name": "Unique Skin Protector body groomer",
+  "model": "BG1025/15",
+  "function": "TRIMS BODY HAIR, PROTECTS SKIN",
+  "speciality": "even in sensitive areas",
+  "description": "Comfortably trim unwanted body hair so you're always prepared for any occasion. This intuitive tool is designed to be gentle, for worry-free bodygrooming even in your most sensitive areas.",
+  "characteristics": [
+    "Unique Skin Protector",
+    "3mm trimming comb",
+    "100% waterproof",
+    "3 AA batteries"
+  ],
+  "price": "1270",
+  "rating": "3.9",
+  "img_link": [
+    "https://images.philips.com/is/image/PhilipsConsumer/BG1025_15-APP-global-001?wid=1000&hei=800&$jpgsmall$",
+    "https://images.philips.com/is/image/PhilipsConsumer/BG1025_15-BPP-global-001?wid=1000&hei=800&$jpgsmall$"
+  ],
+  "video_link": ""
 }

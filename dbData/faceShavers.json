@@ -1,0 +1,22 @@
+{
+  "faceShavers": [
+    {
+      "_id": "5dbeda95de933b0b5c8989c2",
+      "name": "CloseCut shaving head Electric Shaver Wet & Dry",
+      "model": "AT610/14",
+      "function": "Great skin protection, smooth shave",
+      "speciality": "Great skin protection, smooth shave",
+      "description": "Now you can enjoy a refreshing shave without worrying about damaging your skin. Use AquaTouch with shaving gel or foam for enhanced skin comfort. Aquatec seal ensures a safe, refreshing wet shave. Or use dry for a convenient quick shave.",
+      "characteristics": ["CloseCut shaving head", "Wet&Dry"],
+      "price": "2845",
+      "rating": "4.0",
+      "img_link": [
+        "https://images.philips.com/is/image/PhilipsConsumer/AT610_14-IMS-en_IN?wid=1000&hei=800&$jpgsmall$",
+        "https://images.philips.com/is/image/PhilipsConsumer/AT610_14-D1P-global-001?wid=1000&hei=800&$jpgsmall$",
+        "https://images.philips.com/is/image/PhilipsConsumer/AT610_14-DPP-global-001?wid=1000&hei=800&$jpgsmall$",
+        "https://images.philips.com/is/image/PhilipsConsumer/AT610_14-MI1-global-001?wid=1000&hei=800&$jpgsmall$"
+      ],
+      "video_link": ""
+    }
+  ]
+}
